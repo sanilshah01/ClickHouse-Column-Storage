@@ -61,7 +61,8 @@ ClickHouse uses a columnar storage model implemented through the MergeTree engin
 * Result: Wide query reads significantly more bytes
 * Insight: Only required columns are accessed
 
-![Experiment 1](graphs/exp1_read_bytes.png)
+<img width="1074" height="766" alt="exp_1_read_bytes" src="https://github.com/user-attachments/assets/e026f9b1-8dc7-421b-be7d-b09dd39110f7" />
+
 
 ---
 
@@ -71,7 +72,10 @@ ClickHouse uses a columnar storage model implemented through the MergeTree engin
 * Result: ~73K vs ~5M rows scanned (~68x difference)
 * Insight: Sorting enables efficient pruning
 
-![Experiment 2](graphs/exp2_read_rows.png)
+<img width="910" height="650" alt="exp2_read_bytes" src="https://github.com/user-attachments/assets/2afbc40d-91a7-49ed-a7b7-6486dbb684e3" />
+<img width="910" height="650" alt="exp2_read_rows" src="https://github.com/user-attachments/assets/cbe9cada-4c21-4254-b9a8-41f5f7d372ca" />
+
+
 
 ---
 
@@ -81,7 +85,12 @@ ClickHouse uses a columnar storage model implemented through the MergeTree engin
 * Result: Increased read_bytes and query time with larger data
 * Insight: Performance scales with data size
 
-![Experiment 3](graphs/exp3_read_bytes.png)
+<img width="910" height="650" alt="exp3_query_duration" src="https://github.com/user-attachments/assets/34313ae3-038b-4339-a596-b9001a3351f5" />
+<img width="910" height="650" alt="exp3_read_bytes" src="https://github.com/user-attachments/assets/fd913683-e343-4829-818a-b1f312f71cd2" />
+<img width="910" height="650" alt="exp3_read_rows" src="https://github.com/user-attachments/assets/67527c85-2e3d-48b3-a415-96ed0ef8ce71" />
+
+
+
 
 ---
 
@@ -91,7 +100,12 @@ ClickHouse uses a columnar storage model implemented through the MergeTree engin
 * Result: Smaller granularity reads fewer rows but increases metadata
 * Insight: Tradeoff between precision and overhead
 
-![Experiment 4](graphs/exp4_1.png)
+<img width="910" height="650" alt="exp4_1" src="https://github.com/user-attachments/assets/de36931c-1bc4-467d-9362-7eff25126c3c" />
+<img width="910" height="650" alt="exp4_2" src="https://github.com/user-attachments/assets/bebb1716-86f9-45ac-a716-c64a3692e5e4" />
+<img width="910" height="650" alt="exp4_3" src="https://github.com/user-attachments/assets/35f559fe-354c-43ba-a3d4-3611b01ba0d0" />
+
+
+
 
 ---
 
@@ -101,7 +115,8 @@ ClickHouse uses a columnar storage model implemented through the MergeTree engin
 * Result: Wide format used ~6.4% less storage
 * Insight: Column-wise storage improves compression efficiency
 
-![Experiment 5](graphs/exp5_storage.png)
+<img width="910" height="650" alt="exp5_storage" src="https://github.com/user-attachments/assets/10c30187-52f8-4830-95d9-2f7b8aa0b669" />
+
 
 ---
 
@@ -111,7 +126,8 @@ ClickHouse uses a columnar storage model implemented through the MergeTree engin
 * Result: ~15.94x compression achieved
 * Insight: Columnar storage significantly reduces storage and I/O
 
-![Experiment 6](graphs/exp6_compression.png)
+<img width="910" height="650" alt="exp6_compression" src="https://github.com/user-attachments/assets/cfa55e06-ae6e-45e5-b057-2dc4b1b2079a" />
+
 
 ---
 
