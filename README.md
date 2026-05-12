@@ -23,7 +23,7 @@ ClickHouse stores data in a **columnar layout**: each column of a table is writt
 | **Write cost** | Lower for full-row inserts | Higher relative overhead per row, lower per column-batch |
 | **Update cost** | Cheaper in-place update (for some engines) | Rewrites entire column blocks; updates are expensive |
 
-ClickHouse's columnar engine is built around five tightly coupled mechanisms:
+ClickHouse's columnar engine is built around seven tightly coupled mechanisms:
 
 | Mechanism | What It Does |
 |---|---|
@@ -97,8 +97,6 @@ This table summarises every modification made to the ClickHouse C++ source durin
 
 ## System Requirements
 
-> **Warning:** Building ClickHouse from source requires significant resources. If you only want to run Experiment 3 (disable mark cache — a runtime change) using the stock Docker image, no full build is required. Experiments 1, 2, 4, and 5 require a custom-compiled binary.
-
 | Component | Requirement |
 |---|---|
 | Operating System | Linux (Ubuntu 20.04+) or macOS. Windows users should use **WSL2**. |
@@ -113,8 +111,8 @@ This table summarises every modification made to the ClickHouse C++ source durin
 
 ```bash
 # Clone this project
-git clone <your-github-repo-url>
-cd ClickHouse-ColumnarStorage
+git clone https://github.com/clickhouse/clickhouse
+cd ClickHouse
 
 # Initialize and pull the ClickHouse source submodule
 # This step can take 12–14 hours depending on your internet speed
@@ -125,14 +123,12 @@ git submodule update --init --recursive
 
 ## Build Instructions
 
-> These steps are required only for experiments that involve modifying the ClickHouse C++ source code (Experiments 1, 2, 4, and 5).
-
 ```bash
 # Step 1 — Install build dependencies (Ubuntu)
 sudo apt-get install -y cmake ninja-build clang-14 libssl-dev
 
 # Step 2 — Navigate into the ClickHouse source directory
-cd raw/ClickHouse
+cd ClickHouse
 
 # Step 3 — Apply the source code modification for your chosen experiment
 # (See each experiment's section below for the exact lines to change)
@@ -625,14 +621,6 @@ As dataset size grows, every weakness exposed by these experiments is amplified:
 - Without column pruning, I/O grows proportionally to the number of columns in the table schema.
 
 ClickHouse's default configuration is designed for datasets in the hundreds of millions to billions of rows. The defaults are safe at that scale. The experimental configurations in this project would degrade unacceptably at scale.
-
----
-
-### 11. What Happens When Filtering Becomes Less Selective
-
-When a WHERE clause matches a large fraction of the table (low selectivity), data skipping becomes less effective because more mark ranges qualify. In the extreme case — a query with no WHERE clause — data skipping reduces to a no-op and all granules are read. Column pruning and compression remain effective regardless of selectivity.
-
-This is a known assumption in ClickHouse's design: the engine is optimised for queries that filter on the primary key column(s). Queries that do not filter on the ORDER BY key receive no pruning benefit and perform a full columnar scan.
 
 ---
 
