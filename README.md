@@ -1,4 +1,4 @@
-# ClickHouse — Columnar Storage Engine
+# ClickHouse — Columnar Storage Internals
 
 ![DA-IICT](https://img.shields.io/badge/DA--IICT-Big%20Data%20Engineering-blue?style=flat)
 ![Semester](https://img.shields.io/badge/Semester-2-blue?style=flat)
