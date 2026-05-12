@@ -210,7 +210,7 @@ We expected that smaller compression blocks would reduce the codec's ability to 
 | 1 | sales_50m (baseline) | 2.55 | 2.25 GiB | 5.74 GiB | 47 | 67.21 MiB | 503,411 |
 | 2 | sales_50m_compressed (tiny blocks) | 2.30 | 2.50 GiB | 5.74 GiB | 75 | 67.10 MiB | 502,592 |
 
-#### Code Screenshot and Graph
+#### Graph
 
 <div style="display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap;">
 <img src="graphs/plots/exp 1.1.png" alt="Experiment 1: Read Rows" height="300" style="flex:1; min-width:280px;" />
@@ -276,7 +276,7 @@ We expected that reducing granule size from 8192 to 64 would dramatically increa
 | 1 | exp2_default_50m | 100,000,000 | 12,222 | 8,181.97 | 2.55 | 2.25 GiB | 2.25 GiB | 50.5 | 67.21 MiB | 5,034,112 |
 | 2 | exp2_tiny_granules_50m | 100,000,000 | 1,562,510 | 64 | 2.57 | 2.23 GiB | 2.25 GiB | 77.5 | 66.92 MiB | 5,012,224 |
 
-#### Graph Placeholder
+#### Graph
 
 <img src="graphs/plots/exp 2.png" alt="Experiment 2: Query Time Comparison" height="350" style="display:block; margin: 5px 0;" />
 
@@ -338,7 +338,7 @@ We expected that disabling the mark cache would increase query latency for repea
 | 1 | Cold Cache | 35 | 67.21 MiB | 5,034,112 | 27 | 15 |
 | 2 | Warm Cache | 33 | 67.21 MiB | 5,034,112 | 36 | 0 |
 
-#### Graph Placeholder
+#### Graph
 
 <img src="graphs/plots/exp 3.png" alt="Experiment 3: Query Time by Cache State" height="350" style="display:block; margin: 5px 0;" />
 
@@ -400,7 +400,7 @@ We expected a full-table scan on every query regardless of how selective the WHE
 | 1 | Skip Index Disabled | 230 | 511.20 MiB | 45,076,608 | 5,507 | 45,076,608 (~45.08 million) |
 | 2 | Skip Index Enabled | 281 | 236.05 MiB | 21,000,320 | 6,108 | 21,000,320 (~21.00 million) |
 
-#### Code Screenshot and Graph
+#### Graph
 
 <div style="display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap;">
 <img src="graphs/plots/exp 4.png" alt="Experiment 4: Query Time Comparison" height="300" style="flex:1; min-width:280px;" />
@@ -469,7 +469,7 @@ We expected a significant increase in bytes read and query time proportional to 
 | 1 | Column Pruning Disabled | 101 | 220.84 MiB | 5,034,112 | 617 | 5,034,112 (~5.03 million) |
 | 2 | Column Pruning Enabled | 38 | 67.21 MiB | 5,034,112 | 617 | 5,034,112 (~5.03 million) |
 
-#### Code Screenshot and Graph
+#### Graph
 
 <div style="display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap;">
 <img src="graphs/plots/exp 5.png" alt="Experiment 5: Read Bytes Comparison" height="300" style="flex:1; min-width:280px;" />
