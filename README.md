@@ -44,39 +44,34 @@ This architecture is purpose-built for OLAP workloads: aggregations over a few c
 ## Repository Structure
 
 ```
-ClickHouse-ColumnarStorage/
+ClickHouse-Column-Storage/
 │
-├── raw/                                      # ClickHouse source (cloned via submodule)
-│   └── ClickHouse/
-│       └── src/
-│           ├── Storages/MergeTree/           # Core columnar storage C++ source files
-│           └── Processors/QueryPlan/         # Query pipeline and column pruning
+├── README.md
 │
-├── code-notes/                               # Our analysis and documentation
-│   ├── columnar_storage_overview.md          # How ClickHouse columnar storage is structured
-│   ├── execution_flow.md                     # INSERT and SELECT code paths, step by step
-│   ├── design_decisions.md                   # Why ClickHouse made each architectural choice
-│   ├── concept_mapping.md                    # Course concepts mapped to ClickHouse source
-│   └── failure_analysis.md                   # Failure modes and their source-level causes
+├── experiment_results/
+│   ├── exp1_output.png                  # Output table/screenshot for Experiment 1
+│   ├── exp2_output.png                  # Output table/screenshot for Experiment 2
+│   ├── exp3_output.png                  # Output table/screenshot for Experiment 3
+│   ├── exp4_output.png                  # Output table/screenshot for Experiment 4
+│   └── exp5_output.png                  # Output table/screenshot for Experiment 5
 │
-├── experiments/
-│   ├── exp1_tiny_compression_blocks/
-│   │   └── exp1_tiny_compression_blocks.md   # Tiny compression blocks — full report
-│   ├── exp2_tiny_granules/
-│   │   └── exp2_tiny_granules.md             # Tiny granules — full report
-│   ├── exp3_disable_mark_cache/
-│   │   └── exp3_disable_mark_cache.md        # Disable mark cache — full report
-│   ├── exp4_disable_data_skipping/
-│   │   └── exp4_disable_data_skipping.md     # Disable data skipping — full report
-│   └── exp5_disable_column_pruning/
-│       └── exp5_disable_column_pruning.md    # Disable column pruning — full report
+├── graphs/
+│   └── plots/
+│       ├── exp 1.1.png                  # Experiment 1 graph - read/query comparison
+│       ├── exp 1.2.png                  # Experiment 1 graph - compression/storage comparison
+│       ├── exp 2.png                    # Experiment 2 graph - tiny granules comparison
+│       ├── exp 3.png                    # Experiment 3 graph - mark cache comparison
+│       ├── exp 4.png                    # Experiment 4 graph - query time comparison
+│       ├── exp 4.2.png                  # Experiment 4 graph - read rows/bytes comparison
+│       ├── exp 5.png                    # Experiment 5 graph - read bytes comparison
+│       └── exp 5.2.png                  # Experiment 5 graph - query time comparison
 │
-├── Screenshots/
-│   ├── Code/                                 # Source code modification screenshots
-│   ├── Output/                               # Raw query output screenshots (O1–O5)
-│   └── Visualization/                        # Charts for each experiment result
-│
-└── README.md
+└── source_code_modifications/
+    ├── exp1.png                         # Source code modification for tiny compression blocks
+    ├── exp2.png                         # Source code modification for tiny granules
+    ├── exp3.png                         # Source code modification for disabling mark cache
+    ├── exp4.png                         # Source code modification for disabling data skipping
+    └── exp5.png                         # Source code modification for disabling column pruning
 ```
 
 ---
