@@ -619,18 +619,6 @@ ClickHouse's default configuration is designed for datasets in the hundreds of m
 
 ---
 
-### 12. What Assumptions Does ClickHouse Columnar Storage Rely On?
-
-| Assumption | What Breaks If It Fails |
-|---|---|
-| Data is sorted (or partially sorted) on the primary key | Data skipping becomes ineffective; granule pruning eliminates nothing |
-| Queries reference a small subset of columns | Column pruning benefit disappears; I/O scales with schema width |
-| Similar values cluster within column files | Compression ratio degrades; storage footprint grows |
-| Mark files fit in the mark cache | Every query pays full mark file I/O cost |
-| Background merges run continuously | Part count grows, increasing per-query mark and column file overhead |
-
----
-
 ## Design Decisions
 
 | Design Decision | Where It Appears in Code | Problem It Solves | Tradeoff Introduced | Related Experiment |
